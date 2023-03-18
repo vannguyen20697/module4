@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>LIST ALL</h1>
+    <a href="/musics/create">Create new</a>
+<h4 th:if="${message != null}" th:text="${message}"></h4>
+<table border="1">
+    <tr>
+        <th>musicNo</th>
+        <th>musicName</th>
+        <th>musicType</th>
+        <th>musicLink</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="row, iter: ${musics}" th:object="${row}">
+        <td th:text="*{musicNo}"></td>
+        <td th:text="*{musicName}"></td>
+        <td th:text="*{musicType}"></td>
+        <td th:text="*{musicLink}"></td>
+        <td ><a th:href="@{'/musics/update?musicNo='+*{musicNo}}" >Update</a></td>
+    </tr>
+</table>
+</body>
+</html>
