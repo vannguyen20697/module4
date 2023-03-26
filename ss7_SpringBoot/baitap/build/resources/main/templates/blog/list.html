@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>LIST ALL</h1>
+<a href="/blog/create">Create new</a>
+<!--<h4 th:if="${message != null}" th:text="${message}"></h4>-->
+<table border="1">
+    <tr>
+        <th>blogNo</th>
+        <th>nameBlog</th>
+        <th>categoryName</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="row, iter: ${blogs}" th:object="${row}">
+        <td th:text="*{blogNo}"></td>
+        <td th:text="*{nameBlog}"></td>
+        <td th:text="*{category.categoryName}"></td>
+        <td ><a th:href="@{'/blog/update?blogNo='+*{blogNo}}" >Update</a></td>
+    </tr>
+</table>
+</body>
+</html>
